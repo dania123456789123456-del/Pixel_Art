@@ -9,6 +9,15 @@
  "colores": "merida/colores.json",
  "referencia": "merida/referencia.jpg",
  "portada": "merida/portada.jpg"
-  }
+  }, 
+  {
+  "id": "haaland",
+  "titulo": "Haaland",
+  "version": 1,
+  "svg": "haaland/lienzo.svg",
+  "colores": "haaland/colores.json",
+  "referencia": "haaland/referencia.jpg",
+  "portada": "haaland/portada.jpg"
+}
  ]
 }
