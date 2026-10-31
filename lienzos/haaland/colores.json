@@ -1,0 +1,303 @@
+{
+ "formato": 1,
+ "id": "haaland",
+ "titulo": "Haaland",
+ "version": 1,
+ "ancho": 1606.25,
+ "alto": 2858.83,
+ "columnas": 90,
+ "filas": 187,
+ "total": 16830,
+ "radio": 8,
+ "paleta": [
+  {
+   "codigo": "A",
+   "hex": "#E3E4EA",
+   "nombre": "",
+   "total": 2162
+  },
+  {
+   "codigo": "B",
+   "hex": "#7CA9FC",
+   "nombre": "",
+   "total": 1147
+  },
+  {
+   "codigo": "C",
+   "hex": "#D4D7E4",
+   "nombre": "",
+   "total": 1071
+  },
+  {
+   "codigo": "D",
+   "hex": "#D49F84",
+   "nombre": "",
+   "total": 857
+  },
+  {
+   "codigo": "E",
+   "hex": "#B18065",
+   "nombre": "",
+   "total": 846
+  },
+  {
+   "codigo": "F",
+   "hex": "#866863",
+   "nombre": "",
+   "total": 771
+  },
+  {
+   "codigo": "G",
+   "hex": "#6798FC",
+   "nombre": "",
+   "total": 768
+  },
+  {
+   "codigo": "H",
+   "hex": "#B28F69",
+   "nombre": "",
+   "total": 761
+  },
+  {
+   "codigo": "I",
+   "hex": "#937149",
+   "nombre": "",
+   "total": 692
+  },
+  {
+   "codigo": "J",
+   "hex": "#957A61",
+   "nombre": "",
+   "total": 611
+  },
+  {
+   "codigo": "K",
+   "hex": "#7E6145",
+   "nombre": "",
+   "total": 591
+  },
+  {
+   "codigo": "L",
+   "hex": "#96BDFB",
+   "nombre": "",
+   "total": 582
+  },
+  {
+   "codigo": "M",
+   "hex": "#664A2A",
+   "nombre": "",
+   "total": 544
+  },
+  {
+   "codigo": "N",
+   "hex": "#8C7877",
+   "nombre": "",
+   "total": 433
+  },
+  {
+   "codigo": "O",
+   "hex": "#68534A",
+   "nombre": "",
+   "total": 422
+  },
+  {
+   "codigo": "P",
+   "hex": "#C2A884",
+   "nombre": "",
+   "total": 419
+  },
+  {
+   "codigo": "Q",
+   "hex": "#C7C8CB",
+   "nombre": "",
+   "total": 405
+  },
+  {
+   "codigo": "R",
+   "hex": "#483219",
+   "nombre": "",
+   "total": 341
+  },
+  {
+   "codigo": "S",
+   "hex": "#AA9B8C",
+   "nombre": "",
+   "total": 286
+  },
+  {
+   "codigo": "T",
+   "hex": "#712B2D",
+   "nombre": "",
+   "total": 224
+  },
+  {
+   "codigo": "U",
+   "hex": "#7D5248",
+   "nombre": "",
+   "total": 217
+  },
+  {
+   "codigo": "V",
+   "hex": "#B9CCF3",
+   "nombre": "",
+   "total": 215
+  },
+  {
+   "codigo": "W",
+   "hex": "#5A3A3A",
+   "nombre": "",
+   "total": 215
+  },
+  {
+   "codigo": "X",
+   "hex": "#30190A",
+   "nombre": "",
+   "total": 207
+  },
+  {
+   "codigo": "Y",
+   "hex": "#5E5966",
+   "nombre": "",
+   "total": 189
+  },
+  {
+   "codigo": "Z",
+   "hex": "#D6C2AE",
+   "nombre": "",
+   "total": 177
+  },
+  {
+   "codigo": "AA",
+   "hex": "#D9BF96",
+   "nombre": "",
+   "total": 162
+  },
+  {
+   "codigo": "AB",
+   "hex": "#571E24",
+   "nombre": "",
+   "total": 137
+  },
+  {
+   "codigo": "AC",
+   "hex": "#150B07",
+   "nombre": "",
+   "total": 135
+  },
+  {
+   "codigo": "AD",
+   "hex": "#487CF0",
+   "nombre": "",
+   "total": 134
+  },
+  {
+   "codigo": "AE",
+   "hex": "#423236",
+   "nombre": "",
+   "total": 116
+  },
+  {
+   "codigo": "AF",
+   "hex": "#5C321E",
+   "nombre": "",
+   "total": 115
+  },
+  {
+   "codigo": "AG",
+   "hex": "#86553B",
+   "nombre": "",
+   "total": 111
+  },
+  {
+   "codigo": "AH",
+   "hex": "#A9AEBE",
+   "nombre": "",
+   "total": 88
+  },
+  {
+   "codigo": "AI",
+   "hex": "#626087",
+   "nombre": "",
+   "total": 86
+  },
+  {
+   "codigo": "AJ",
+   "hex": "#CB8C83",
+   "nombre": "",
+   "total": 84
+  },
+  {
+   "codigo": "AK",
+   "hex": "#4E619B",
+   "nombre": "",
+   "total": 83
+  },
+  {
+   "codigo": "AL",
+   "hex": "#84778A",
+   "nombre": "",
+   "total": 76
+  },
+  {
+   "codigo": "AM",
+   "hex": "#5375CB",
+   "nombre": "",
+   "total": 74
+  },
+  {
+   "codigo": "AN",
+   "hex": "#8495CC",
+   "nombre": "",
+   "total": 52
+  },
+  {
+   "codigo": "AO",
+   "hex": "#A15D58",
+   "nombre": "",
+   "total": 48
+  },
+  {
+   "codigo": "AP",
+   "hex": "#34519D",
+   "nombre": "",
+   "total": 41
+  },
+  {
+   "codigo": "AQ",
+   "hex": "#D7B772",
+   "nombre": "",
+   "total": 32
+  },
+  {
+   "codigo": "AR",
+   "hex": "#785F7D",
+   "nombre": "",
+   "total": 27
+  },
+  {
+   "codigo": "AS",
+   "hex": "#2E3766",
+   "nombre": "",
+   "total": 23
+  },
+  {
+   "codigo": "AT",
+   "hex": "#1A1D4D",
+   "nombre": "",
+   "total": 21
+  },
+  {
+   "codigo": "AU",
+   "hex": "#2257CA",
+   "nombre": "",
+   "total": 16
+  },
+  {
+   "codigo": "AV",
+   "hex": "#13122B",
+   "nombre": "",
+   "total": 16
+  }
+ ],
+ "creado": "2026-10-31T10:42:53.426Z"
+}
