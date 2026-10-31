@@ -6,25 +6,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;height:100%;overflow:hidden;font-family:Fredoka,'Arial Rounded MT Bold',system-ui,sans-serif;color:#000;background:#16325c}
+html,body{margin:0;height:100%;width:100%;overflow:hidden;position:fixed;inset:0;font-family:Fredoka,'Arial Rounded MT Bold',system-ui,sans-serif;color:#000;background:#16325c}
 #bg{position:fixed;inset:-24px;background:linear-gradient(135deg,#16325c,#3b6ea5) center/cover;filter:blur(14px) brightness(.8)}
 .glass{background:rgba(215,217,224,.55);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:2px solid rgba(255,255,255,.85);box-shadow:0 8px 30px rgba(0,0,0,.35)}
 button{font:inherit;cursor:pointer;color:#000}
 #lib{position:absolute;inset:0;overflow:auto;padding:max(12px,env(safe-area-inset-top)) 4vw 40px}
-h1{color:#fff;font-size:clamp(2rem,7vw,4.2rem);margin:.3em 0 .4em;text-shadow:0 2px 10px #0006}
-#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(42vw,300px),1fr));gap:4vw}
+h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shadow:0 2px 10px #0006}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(100px,21vw,200px),1fr));gap:12px}
 .card{aspect-ratio:1;border-radius:14%;padding:6%;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;cursor:pointer;overflow:hidden}
 .card.ph{cursor:default}
 .card img{max-width:80%;min-height:0;flex:1;object-fit:contain;box-shadow:0 4px 14px #0006}
-.card b{font-size:clamp(1rem,3.6vw,1.8rem);margin-top:4px}
+.card b{font-size:clamp(.85rem,2.6vw,1.3rem);margin-top:4px}
 .bar{width:80%;height:8px;background:#0003;border-radius:6px;overflow:hidden;margin:4px 0}.bar i{display:block;height:100%;background:#fff;width:0}
-.card small{font-size:clamp(.65rem,2.2vw,.85rem)}
+.card small{font-size:clamp(.6rem,1.8vw,.78rem)}
 .msg{padding:20px;border-radius:30px;grid-column:1/-1;font-size:1.05rem}
-#pt{position:absolute;inset:0;display:none}
+#pt{position:fixed;inset:0;display:none;overflow:hidden}
 #stage{position:absolute;inset:0;overflow:hidden;touch-action:none}
 #sv{position:absolute;left:0;top:0;transform-origin:0 0}
 #stage.hc #textos{display:none}
-#top{position:absolute;top:-2px;left:6%;right:6%;padding:max(8px,env(safe-area-inset-top)) 12px 8px;border-radius:0 0 40px 40px;text-align:center;font-size:clamp(1.3rem,5vw,2.6rem);font-weight:700;z-index:5}
+#top{position:absolute;top:-2px;left:6%;right:6%;padding:max(8px,env(safe-area-inset-top)) 64px 8px;border-radius:0 0 40px 40px;text-align:center;font-size:clamp(1.3rem,5vw,2.6rem);font-weight:700;z-index:5}
 .ib{position:absolute;z-index:6;width:48px;height:48px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:1.5rem;font-weight:700}
 #home{left:8px;top:72px;background:none;border:0;box-shadow:none;width:56px;height:56px}
 #home svg{width:100%;fill:#fff;filter:drop-shadow(0 2px 4px #0008)}
@@ -32,7 +32,7 @@ h1{color:#fff;font-size:clamp(2rem,7vw,4.2rem);margin:.3em 0 .4em;text-shadow:0 
 .tab{position:absolute;z-index:6;display:grid;place-items:center;padding:0}
 #tabR{right:-2px;top:28%;width:48px;height:150px;border-radius:44px 0 0 44px}
 #tabB{bottom:-2px;left:50%;margin-left:-85px;width:170px;height:48px;border-radius:44px 44px 0 0}
-.panel{position:absolute;z-index:7;transition:transform .3s}
+.panel{position:absolute;z-index:7;visibility:hidden;transition:transform .3s,visibility 0s .3s}.panel.open{visibility:visible;transition:transform .3s}
 #refp{right:-2px;top:128px;width:min(62vw,340px);border-radius:36px 0 0 36px;padding:14px 50px 14px 14px;transform:translateX(110%)}
 #refp.open{transform:none}
 #refp img{width:100%;display:block;cursor:zoom-in;box-shadow:0 4px 14px #0006}
@@ -49,10 +49,9 @@ h1{color:#fff;font-size:clamp(2rem,7vw,4.2rem);margin:.3em 0 .4em;text-shadow:0 
 #set label{display:flex;gap:8px;align-items:center;margin:10px 0}#set button{margin:4px 4px 0 0;padding:8px 14px;border-radius:16px;border:2px solid #fff;background:#fff8;font-weight:700}
 #toast{position:fixed;left:50%;top:max(70px,env(safe-area-inset-top));transform:translateX(-50%);background:#fff;padding:10px 18px;border-radius:20px;z-index:30;display:none;max-width:90vw;box-shadow:0 4px 20px #0006}
 #sav{position:absolute;left:70px;bottom:10px;z-index:6;color:#fff;font-size:.8rem;text-shadow:0 1px 4px #000}
-#mini{position:fixed;right:8px;bottom:14px;z-index:12;display:flex;align-items:center;gap:6px;padding:4px 6px;border-radius:28px}
-body.paint #mini{top:76px;bottom:auto}
-#mini button{width:38px;height:38px;border-radius:50%;border:0;background:#fff9;font-size:1.1rem;font-weight:700;padding:0}
-#mt{font-size:.8rem;max-width:26vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#mbtn{position:fixed;z-index:12;top:14px;right:4vw;width:48px;height:48px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:1.4rem}
+body.paint #mbtn{top:6px;right:calc(6% + 8px);width:44px;height:44px}
+#mbtn.on{outline:3px solid #fff;box-shadow:0 0 14px #fff}
 #mus{position:fixed;inset:0;z-index:16;display:none;place-items:center;background:#0005}
 #mus>div{width:min(94vw,420px);max-height:86vh;overflow:auto;border-radius:30px;padding:16px}
 .tr{display:flex;align-items:center;gap:6px;padding:7px 8px;border-radius:14px;cursor:pointer;font-size:.9rem}.tr.on{background:#fff9}
@@ -80,7 +79,7 @@ body.paint #mini{top:76px;bottom:auto}
   <button class="ar" id="colx"><svg viewBox="0 0 40 44" style="transform:rotate(-90deg)"><path d="M40 0 0 22 40 44 30 22z"/></svg></button></div>
  <div id="sav"></div>
 </div>
-<div id="mini" class="glass"><button id="mp" aria-label="Reproducir o pausar">▶</button><span id="mt">Sin música</span><button id="mo" aria-label="Abrir lista de canciones">♪</button></div>
+<button id="mbtn" class="glass" aria-label="Música">♪</button>
 <div id="mus"><div class="glass"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:1.3rem">Música</b><button class="mb" id="mx">Minimizar</button></div>
  <div id="mnow" style="margin:6px 0;font-weight:700">Sin música</div>
  <input type="range" id="ms" min="0" max="1000" value="0"><div style="display:flex;justify-content:space-between;font-size:.8rem"><span id="mc">0:00</span><span id="md">0:00</span></div>
@@ -175,7 +174,9 @@ function save(now){const r=cur;if(!r)return;clearTimeout(saveT);$('#sav').textCo
 /* ---------- Zoom y desplazamiento ---------- */
 const stage=$('#stage'),ptrs=new Map();let g=null,pd=1;
 const apply=()=>{if(sv)sv.style.transform=`translate(${V.x}px,${V.y}px) scale(${V.k})`};
-function fit(){const r=stage.getBoundingClientRect();fitK=Math.min(r.width/W,(r.height-130)/H)*.96;V.k=fitK;V.x=(r.width-W*fitK)/2;V.y=(r.height-H*fitK)/2+20;apply()}
+function fit(){const r=stage.getBoundingClientRect(),top=($('#top').offsetHeight||60)+8,ah=r.height-top-56;fitK=Math.min((r.width-16)/W,ah/H);V.k=fitK;V.x=(r.width-W*fitK)/2;V.y=top+(ah-H*fitK)/2;apply()}
+let land=innerWidth>innerHeight;addEventListener('resize',()=>{const l=innerWidth>innerHeight;if(l!==land){land=l;if(cur)fit()}});
+function fitOld(){const r=stage.getBoundingClientRect();fitK=Math.min(r.width/W,(r.height-130)/H)*.96;V.k=fitK;V.x=(r.width-W*fitK)/2;V.y=(r.height-H*fitK)/2+20;apply()}
 function zoomAt(f,cx,cy){const r=stage.getBoundingClientRect();cx-=r.left;cy-=r.top;const k=Math.min(60,Math.max(fitK*.5,V.k*f));f=k/V.k;V.x=cx-(cx-V.x)*f;V.y=cy-(cy-V.y)*f;V.k=k;apply()}
 const pv=()=>[...ptrs.values()],pdist=()=>{const[a,b]=pv();return Math.hypot(a[0]-b[0],a[1]-b[1])||1},pmid=()=>{const[a,b]=pv();return[(a[0]+b[0])/2,(a[1]+b[1])/2]};
 stage.addEventListener('pointerdown',e=>{ptrs.set(e.pointerId,[e.clientX,e.clientY]);if(ptrs.size==1)g={tg:e.target,mv:0};else{if(g)g.mv=99;pd=pdist()}});
@@ -211,8 +212,8 @@ let T=[],ti=-1,mp={vol:.8,shuf:false,rep:0,last:null,pos:0,keep:false},MUSURL=nu
 try{MUSURL=new URL('musica/catalogo-musica.json',location.href);if(!/^(https?|file):/.test(MUSURL.protocol))MUSURL=null}catch(e){}
 const fmt=x=>isFinite(x)&&x>0?Math.floor(x/60)+':'+String(Math.floor(x%60)).padStart(2,'0'):'0:00';
 const smp=()=>dbPut('prefs',mp,'mus').catch(()=>{});
-function ui(){const pl=!au.paused,t=T[ti];$('#mt').textContent=t?t.t:'Sin música';$('#mnow').textContent=t?t.t+(t.a?' — '+t.a:''):'Sin música';
- $('#mp').textContent=$('#mp2').textContent=pl?'⏸':'▶';$('#mshuf').textContent='Aleatorio: '+(mp.shuf?'sí':'no');$('#mrep').textContent=['Repetir: no','Repetir: canción','Repetir: lista'][mp.rep];$('#md').textContent=fmt(au.duration)}
+function ui(){const pl=!au.paused,t=T[ti];$('#mbtn').classList.toggle('on',pl);$('#mnow').textContent=t?t.t+(t.a?' — '+t.a:''):'Sin música';
+ $('#mp2').textContent=pl?'⏸':'▶';$('#mshuf').textContent='Aleatorio: '+(mp.shuf?'sí':'no');$('#mrep').textContent=['Repetir: no','Repetir: canción','Repetir: lista'][mp.rep];$('#md').textContent=fmt(au.duration)}
 function rl(){const b=$('#mlist');b.innerHTML='';if(!T.length)b.textContent='Aún no hay canciones. Añade archivos de tu dispositivo o publícalos en musica/.';
  T.forEach((t,i)=>{const d=document.createElement('div');d.className='tr'+(i===ti?' on':'');
   d.innerHTML='<span>'+(i===ti&&!au.paused?'♪':'•')+'</span><span class="tt"></span><small></small>';d.querySelector('.tt').textContent=t.t;
@@ -235,8 +236,8 @@ au.onplay=au.onpause=()=>{ui();rl();if(au.paused){mp.pos=au.currentTime||0;smp()
 au.onloadedmetadata=()=>{if(T[ti]&&!T[ti].dur){T[ti].dur=au.duration;rl()}ui()};
 au.ontimeupdate=()=>{if(!seeking&&au.duration)$('#ms').value=au.currentTime/au.duration*1000;$('#mc').textContent=fmt(au.currentTime);
  if(Date.now()-lp>5000){lp=Date.now();mp.pos=au.currentTime;smp()}};
-$('#mp').onclick=$('#mp2').onclick=toggle;$('#mnext').onclick=()=>step(1);$('#mprev').onclick=()=>{if(au.currentTime>3)au.currentTime=0;else step(-1)};
-$('#mo').onclick=()=>{$('#mus').style.display='grid'};$('#mx').onclick=()=>{$('#mus').style.display='none'};$('#mus').onclick=e=>{if(e.target.id==='mus')$('#mus').style.display='none'};
+$('#mp2').onclick=toggle;$('#mnext').onclick=()=>step(1);$('#mprev').onclick=()=>{if(au.currentTime>3)au.currentTime=0;else step(-1)};
+$('#mbtn').onclick=()=>{$('#mus').style.display='grid'};$('#mx').onclick=()=>{$('#mus').style.display='none'};$('#mus').onclick=e=>{if(e.target.id==='mus')$('#mus').style.display='none'};
 $('#mshuf').onclick=()=>{mp.shuf=!mp.shuf;smp();ui()};$('#mrep').onclick=()=>{mp.rep=(mp.rep+1)%3;smp();ui()};
 $('#mv').oninput=e=>{au.volume=mp.vol=+e.target.value;smp()};$('#mkeep').onchange=e=>{mp.keep=e.target.checked;smp()};
 $('#ms').onpointerdown=()=>seeking=true;$('#ms').onpointerup=()=>seeking=false;
