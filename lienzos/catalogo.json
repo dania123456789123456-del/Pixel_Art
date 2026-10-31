@@ -2,13 +2,13 @@
  "formato": 1,
  "lienzos": [
   {
-   "id": "1000728535",
-   "titulo": "Cara de Gato",
-   "version": 1,
-   "svg": "1000728535/lienzo.svg",
-   "colores": "1000728535/colores.json",
-   "referencia": "1000728535/referencia.jpg",
-   "portada": "1000728535/portada.jpg"
+ "id": "merida",
+ "titulo": "Merida",
+ "version": 1,
+ "svg": "merida/lienzo.svg",
+ "colores": "merida/colores.json",
+ "referencia": "merida/referencia.jpg",
+ "portada": "merida/portada.jpg"
   }
  ]
 }
