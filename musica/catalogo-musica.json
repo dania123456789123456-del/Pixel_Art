@@ -1,1 +1,7 @@
-{"formato":1,"canciones":[]}
+{
+  "formato": 1,
+  "canciones": [
+    { "id": "c1", "titulo": "Trip", "artista": "26is", "archivo": "Trip.mp3" },
+    { "id": "c2", "titulo": "Los Menores Ya Crecimos", "artista" : "Yerzy", "archivo": "Los_Menores.mp3" }
+  ]
+}
