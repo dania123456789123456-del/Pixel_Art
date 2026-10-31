@@ -24,7 +24,7 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 #stage{position:absolute;inset:0;overflow:hidden;touch-action:none}
 #sv{position:absolute;left:0;top:0;transform-origin:0 0}
 #stage.hc #textos{display:none}
-#top{position:absolute;top:-2px;left:6%;right:6%;padding:max(8px,env(safe-area-inset-top)) 64px 8px;border-radius:0 0 40px 40px;text-align:center;font-size:clamp(1.3rem,5vw,2.6rem);font-weight:700;z-index:5}
+#top{position:absolute;top:-2px;left:6%;right:6%;padding:max(8px,env(safe-area-inset-top)) 12px 8px;display:flex;align-items:center;justify-content:center;gap:14px;border-radius:0 0 40px 40px;text-align:center;font-size:clamp(1.3rem,5vw,2.6rem);font-weight:700;z-index:5}
 .ib{position:absolute;z-index:6;width:48px;height:48px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:1.5rem;font-weight:700}
 #home{left:8px;top:72px;background:none;border:0;box-shadow:none;width:56px;height:56px}
 #home svg{width:100%;fill:#fff;filter:drop-shadow(0 2px 4px #0008)}
@@ -33,9 +33,9 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 #tabR{right:-2px;top:28%;width:48px;height:150px;border-radius:44px 0 0 44px}
 #tabB{bottom:-2px;left:50%;margin-left:-85px;width:170px;height:48px;border-radius:44px 44px 0 0}
 .panel{position:absolute;z-index:7;visibility:hidden;transition:transform .3s,visibility 0s .3s}.panel.open{visibility:visible;transition:transform .3s}
-#refp{right:-2px;top:128px;width:min(62vw,340px);border-radius:36px 0 0 36px;padding:14px 50px 14px 14px;transform:translateX(110%)}
+#refp{right:-2px;top:76px;border-radius:36px 0 0 36px;padding:12px 52px 12px 12px;transform:translateX(110%)}
 #refp.open{transform:none}
-#refp img{width:100%;display:block;cursor:zoom-in;box-shadow:0 4px 14px #0006}
+#refp img{display:block;cursor:zoom-in;box-shadow:0 4px 14px #0006}
 #colp{left:3%;right:3%;bottom:-2px;border-radius:40px 40px 0 0;padding:14px 60px 14px 12px;transform:translateY(110%)}
 #colp.open{transform:none}
 #sws{display:flex;flex-wrap:wrap;gap:6px 4px;max-height:36vh;overflow:auto;justify-content:center}
@@ -50,7 +50,7 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 #toast{position:fixed;left:50%;top:max(70px,env(safe-area-inset-top));transform:translateX(-50%);background:#fff;padding:10px 18px;border-radius:20px;z-index:30;display:none;max-width:90vw;box-shadow:0 4px 20px #0006}
 #sav{position:absolute;left:70px;bottom:10px;z-index:6;color:#fff;font-size:.8rem;text-shadow:0 1px 4px #000}
 #mbtn{position:fixed;z-index:12;top:14px;right:4vw;width:48px;height:48px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:1.4rem}
-body.paint #mbtn{top:6px;right:calc(6% + 8px);width:44px;height:44px}
+#top #mbtn{position:static;width:40px;height:40px;flex:none;font-size:1.2rem}
 #mbtn.on{outline:3px solid #fff;box-shadow:0 0 14px #fff}
 #mus{position:fixed;inset:0;z-index:16;display:none;place-items:center;background:#0005}
 #mus>div{width:min(94vw,420px);max-height:86vh;overflow:auto;border-radius:30px;padding:16px}
@@ -65,7 +65,7 @@ body.paint #mbtn{top:6px;right:calc(6% + 8px);width:44px;height:44px}
 
 <div id="pt">
  <div id="stage"></div>
- <div id="top" class="glass"><span id="ttl"></span></div>
+ <div id="top" class="glass"><span id="ttl" style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span></div>
  <button id="home" class="ib" aria-label="Inicio"><svg viewBox="0 0 100 90"><path d="M50 0 0 45h14v45h26V58h20v32h26V45h14z"/><rect x="10" y="8" width="14" height="22"/></svg></button>
  <button class="ib glass" id="zi" style="left:10px;top:136px">+</button>
  <button class="ib glass" id="zo" style="left:10px;top:192px">−</button>
@@ -154,7 +154,7 @@ async function openC(e){toast('Cargando lienzo…',0);
   if(r&&r.version==e.version&&r.total==cs.length){r.pintados.forEach(i=>{if(i<cs.length){cur.painted.add(i);paintCell(i)}});cur.cs.forEach(()=>0);cur.painted.forEach(i=>cur.done[cs[i].getAttribute('data-code')]++);if(r.activo in pal)cur.active=r.activo}
   else if(r)toast('El lienzo cambió de versión: el progreso anterior no se aplicó.',6000);
   $('#ttl').textContent=e.titulo||e.id;$('#refimg').src=U(e.referencia);$('#refimg').onerror=()=>$('#referr').textContent='No se pudo cargar la referencia.';$('#referr').textContent='';
-  buildSw();$('#lib').style.display='none';$('#pt').style.display='block';document.body.classList.add('paint');$('#stage').className=pref.hc?'hc':'';
+  buildSw();$('#lib').style.display='none';$('#pt').style.display='block';document.body.classList.add('paint');$('#top').append($('#mbtn'));$('#stage').className=pref.hc?'hc':'';
   closeP();fit();toast('',1);$('#toast').style.display='none';
  }catch(err){console.error(err);toast('No se pudo abrir el lienzo: '+err.message+'. Toca la tarjeta para reintentar.',7000)}}
 function paintCell(i){const c=cur.cs[i],h=cur.pal[c.getAttribute('data-code')];c.setAttribute('fill',h);if(cur.tx[i])cur.tx[i].setAttribute('fill',lum(h)>140?'#111':'#fff')}
@@ -174,6 +174,9 @@ function save(now){const r=cur;if(!r)return;clearTimeout(saveT);$('#sav').textCo
 /* ---------- Zoom y desplazamiento ---------- */
 const stage=$('#stage'),ptrs=new Map();let g=null,pd=1;
 const apply=()=>{if(sv)sv.style.transform=`translate(${V.x}px,${V.y}px) scale(${V.k})`};
+function sizeRef(){const im=$('#refimg'),p=$('#refp');if(!im.naturalWidth)return;const top=($('#top').offsetHeight||60)+8,k=Math.min((innerHeight-top-16-24)/im.naturalHeight,(innerWidth*.7-64)/im.naturalWidth);
+ p.style.top=top+'px';im.style.width=Math.floor(im.naturalWidth*k)+'px';im.style.height=Math.floor(im.naturalHeight*k)+'px'}
+$('#refimg').addEventListener('load',sizeRef);addEventListener('resize',sizeRef);
 function fit(){const r=stage.getBoundingClientRect(),top=($('#top').offsetHeight||60)+8,ah=r.height-top-56;fitK=Math.min((r.width-16)/W,ah/H);V.k=fitK;V.x=(r.width-W*fitK)/2;V.y=top+(ah-H*fitK)/2;apply()}
 let land=innerWidth>innerHeight;addEventListener('resize',()=>{const l=innerWidth>innerHeight;if(l!==land){land=l;if(cur)fit()}});
 function fitOld(){const r=stage.getBoundingClientRect();fitK=Math.min(r.width/W,(r.height-130)/H)*.96;V.k=fitK;V.x=(r.width-W*fitK)/2;V.y=(r.height-H*fitK)/2+20;apply()}
@@ -191,12 +194,12 @@ $('#zi').onclick=()=>zoomAt(1.4,...mid());$('#zo').onclick=()=>zoomAt(1/1.4,...m
 
 /* ---------- Paneles y ajustes ---------- */
 const closeP=()=>{$('#refp').classList.remove('open');$('#colp').classList.remove('open');$('#tabR').style.display=$('#tabB').style.display=''};
-$('#tabR').onclick=()=>{$('#refp').classList.add('open');$('#tabR').style.display='none'};
+$('#tabR').onclick=()=>{sizeRef();$('#refp').classList.add('open');$('#tabR').style.display='none'};
 $('#refx').onclick=()=>{$('#refp').classList.remove('open');$('#tabR').style.display=''};
 $('#tabB').onclick=()=>{$('#colp').classList.add('open');$('#tabB').style.display='none'};
 $('#colx').onclick=()=>{$('#colp').classList.remove('open');$('#tabB').style.display=''};
 $('#refimg').onclick=()=>{$('#big img').src=$('#refimg').src;$('#big').style.display='grid'};$('#big').onclick=()=>$('#big').style.display='none';
-$('#home').onclick=()=>{save(true);document.body.classList.remove('paint');$('#pt').style.display='none';$('#lib').style.display='';loadLib()};
+$('#home').onclick=()=>{save(true);document.body.classList.remove('paint');document.body.append($('#mbtn'));$('#pt').style.display='none';$('#lib').style.display='';loadLib()};
 $('#gear').onclick=()=>{$('#phc').checked=pref.hc;$('#pvib').checked=pref.vib;$('#set').style.display='grid'};
 $('#pok').onclick=()=>$('#set').style.display='none';
 const sp=()=>dbPut('prefs',pref,'ui').catch(()=>{});
