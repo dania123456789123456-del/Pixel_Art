@@ -1,0 +1,399 @@
+{
+ "formato": 1,
+ "id": "merida",
+ "titulo": "Merida",
+ "version": 1,
+ "ancho": 1956.25,
+ "alto": 3480.18,
+ "columnas": 110,
+ "filas": 228,
+ "total": 25080,
+ "radio": 8,
+ "paleta": [
+  {
+   "codigo": "A",
+   "hex": "#062724",
+   "nombre": "",
+   "total": 3787
+  },
+  {
+   "codigo": "B",
+   "hex": "#051616",
+   "nombre": "",
+   "total": 1499
+  },
+  {
+   "codigo": "C",
+   "hex": "#083732",
+   "nombre": "",
+   "total": 1214
+  },
+  {
+   "codigo": "D",
+   "hex": "#081D1A",
+   "nombre": "",
+   "total": 1202
+  },
+  {
+   "codigo": "E",
+   "hex": "#0D0D09",
+   "nombre": "",
+   "total": 1083
+  },
+  {
+   "codigo": "F",
+   "hex": "#421409",
+   "nombre": "",
+   "total": 752
+  },
+  {
+   "codigo": "G",
+   "hex": "#541A0C",
+   "nombre": "",
+   "total": 749
+  },
+  {
+   "codigo": "H",
+   "hex": "#310F07",
+   "nombre": "",
+   "total": 661
+  },
+  {
+   "codigo": "I",
+   "hex": "#69220F",
+   "nombre": "",
+   "total": 645
+  },
+  {
+   "codigo": "J",
+   "hex": "#4A351D",
+   "nombre": "",
+   "total": 637
+  },
+  {
+   "codigo": "K",
+   "hex": "#5B4323",
+   "nombre": "",
+   "total": 622
+  },
+  {
+   "codigo": "L",
+   "hex": "#802A11",
+   "nombre": "",
+   "total": 562
+  },
+  {
+   "codigo": "M",
+   "hex": "#232013",
+   "nombre": "",
+   "total": 495
+  },
+  {
+   "codigo": "N",
+   "hex": "#372E1C",
+   "nombre": "",
+   "total": 493
+  },
+  {
+   "codigo": "O",
+   "hex": "#273626",
+   "nombre": "",
+   "total": 455
+  },
+  {
+   "codigo": "P",
+   "hex": "#224837",
+   "nombre": "",
+   "total": 445
+  },
+  {
+   "codigo": "Q",
+   "hex": "#9A3715",
+   "nombre": "",
+   "total": 438
+  },
+  {
+   "codigo": "R",
+   "hex": "#434228",
+   "nombre": "",
+   "total": 428
+  },
+  {
+   "codigo": "S",
+   "hex": "#5D5A38",
+   "nombre": "",
+   "total": 423
+  },
+  {
+   "codigo": "T",
+   "hex": "#754922",
+   "nombre": "",
+   "total": 414
+  },
+  {
+   "codigo": "U",
+   "hex": "#8F5D2C",
+   "nombre": "",
+   "total": 405
+  },
+  {
+   "codigo": "V",
+   "hex": "#B14518",
+   "nombre": "",
+   "total": 402
+  },
+  {
+   "codigo": "W",
+   "hex": "#374D36",
+   "nombre": "",
+   "total": 385
+  },
+  {
+   "codigo": "X",
+   "hex": "#10534B",
+   "nombre": "",
+   "total": 352
+  },
+  {
+   "codigo": "Y",
+   "hex": "#200E07",
+   "nombre": "",
+   "total": 327
+  },
+  {
+   "codigo": "Z",
+   "hex": "#2F634E",
+   "nombre": "",
+   "total": 325
+  },
+  {
+   "codigo": "AA",
+   "hex": "#EEA071",
+   "nombre": "",
+   "total": 303
+  },
+  {
+   "codigo": "AB",
+   "hex": "#CA5319",
+   "nombre": "",
+   "total": 299
+  },
+  {
+   "codigo": "AC",
+   "hex": "#593119",
+   "nombre": "",
+   "total": 299
+  },
+  {
+   "codigo": "AD",
+   "hex": "#F7B787",
+   "nombre": "",
+   "total": 298
+  },
+  {
+   "codigo": "AE",
+   "hex": "#392412",
+   "nombre": "",
+   "total": 297
+  },
+  {
+   "codigo": "AF",
+   "hex": "#70572E",
+   "nombre": "",
+   "total": 294
+  },
+  {
+   "codigo": "AG",
+   "hex": "#A97339",
+   "nombre": "",
+   "total": 262
+  },
+  {
+   "codigo": "AH",
+   "hex": "#4F6548",
+   "nombre": "",
+   "total": 259
+  },
+  {
+   "codigo": "AI",
+   "hex": "#746C46",
+   "nombre": "",
+   "total": 252
+  },
+  {
+   "codigo": "AJ",
+   "hex": "#277361",
+   "nombre": "",
+   "total": 220
+  },
+  {
+   "codigo": "AK",
+   "hex": "#694B2F",
+   "nombre": "",
+   "total": 220
+  },
+  {
+   "codigo": "AL",
+   "hex": "#6B7250",
+   "nombre": "",
+   "total": 217
+  },
+  {
+   "codigo": "AM",
+   "hex": "#B16843",
+   "nombre": "",
+   "total": 206
+  },
+  {
+   "codigo": "AN",
+   "hex": "#597C5F",
+   "nombre": "",
+   "total": 200
+  },
+  {
+   "codigo": "AO",
+   "hex": "#733B24",
+   "nombre": "",
+   "total": 199
+  },
+  {
+   "codigo": "AP",
+   "hex": "#8A421C",
+   "nombre": "",
+   "total": 193
+  },
+  {
+   "codigo": "AQ",
+   "hex": "#E16921",
+   "nombre": "",
+   "total": 183
+  },
+  {
+   "codigo": "AR",
+   "hex": "#C68E4D",
+   "nombre": "",
+   "total": 178
+  },
+  {
+   "codigo": "AS",
+   "hex": "#914F32",
+   "nombre": "",
+   "total": 168
+  },
+  {
+   "codigo": "AT",
+   "hex": "#D38459",
+   "nombre": "",
+   "total": 165
+  },
+  {
+   "codigo": "AU",
+   "hex": "#47856D",
+   "nombre": "",
+   "total": 154
+  },
+  {
+   "codigo": "AV",
+   "hex": "#A85728",
+   "nombre": "",
+   "total": 149
+  },
+  {
+   "codigo": "AW",
+   "hex": "#855B38",
+   "nombre": "",
+   "total": 135
+  },
+  {
+   "codigo": "AX",
+   "hex": "#C96226",
+   "nombre": "",
+   "total": 125
+  },
+  {
+   "codigo": "AY",
+   "hex": "#C16D38",
+   "nombre": "",
+   "total": 102
+  },
+  {
+   "codigo": "AZ",
+   "hex": "#8A6C3E",
+   "nombre": "",
+   "total": 90
+  },
+  {
+   "codigo": "BA",
+   "hex": "#A9774A",
+   "nombre": "",
+   "total": 76
+  },
+  {
+   "codigo": "BB",
+   "hex": "#EB895C",
+   "nombre": "",
+   "total": 72
+  },
+  {
+   "codigo": "BC",
+   "hex": "#AE4F33",
+   "nombre": "",
+   "total": 60
+  },
+  {
+   "codigo": "BD",
+   "hex": "#D3623F",
+   "nombre": "",
+   "total": 36
+  },
+  {
+   "codigo": "BE",
+   "hex": "#D57150",
+   "nombre": "",
+   "total": 35
+  },
+  {
+   "codigo": "BF",
+   "hex": "#B18D57",
+   "nombre": "",
+   "total": 35
+  },
+  {
+   "codigo": "BG",
+   "hex": "#516C57",
+   "nombre": "",
+   "total": 30
+  },
+  {
+   "codigo": "BH",
+   "hex": "#EFD7B7",
+   "nombre": "",
+   "total": 29
+  },
+  {
+   "codigo": "BI",
+   "hex": "#BC9F84",
+   "nombre": "",
+   "total": 14
+  },
+  {
+   "codigo": "BJ",
+   "hex": "#DBB185",
+   "nombre": "",
+   "total": 12
+  },
+  {
+   "codigo": "BK",
+   "hex": "#798A77",
+   "nombre": "",
+   "total": 8
+  },
+  {
+   "codigo": "BL",
+   "hex": "#C8C5AD",
+   "nombre": "",
+   "total": 6
+  }
+ ],
+ "creado": "2026-10-31T04:29:31.261Z"
+}
