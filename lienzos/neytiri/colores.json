@@ -1,0 +1,207 @@
+{
+ "formato": 1,
+ "id": "neytiri",
+ "titulo": "Neytiri",
+ "version": 1,
+ "ancho": 1781.25,
+ "alto": 1782.82,
+ "columnas": 100,
+ "filas": 116,
+ "total": 11600,
+ "radio": 8,
+ "paleta": [
+  {
+   "codigo": "A",
+   "hex": "#13171B",
+   "nombre": "",
+   "total": 2918
+  },
+  {
+   "codigo": "B",
+   "hex": "#112240",
+   "nombre": "",
+   "total": 975
+  },
+  {
+   "codigo": "C",
+   "hex": "#0A3B55",
+   "nombre": "",
+   "total": 836
+  },
+  {
+   "codigo": "D",
+   "hex": "#095677",
+   "nombre": "",
+   "total": 765
+  },
+  {
+   "codigo": "E",
+   "hex": "#103B66",
+   "nombre": "",
+   "total": 716
+  },
+  {
+   "codigo": "F",
+   "hex": "#192933",
+   "nombre": "",
+   "total": 610
+  },
+  {
+   "codigo": "G",
+   "hex": "#0F1E5A",
+   "nombre": "",
+   "total": 593
+  },
+  {
+   "codigo": "H",
+   "hex": "#123D78",
+   "nombre": "",
+   "total": 480
+  },
+  {
+   "codigo": "I",
+   "hex": "#0D6D84",
+   "nombre": "",
+   "total": 409
+  },
+  {
+   "codigo": "J",
+   "hex": "#25C9D7",
+   "nombre": "",
+   "total": 401
+  },
+  {
+   "codigo": "K",
+   "hex": "#1FA3BD",
+   "nombre": "",
+   "total": 396
+  },
+  {
+   "codigo": "L",
+   "hex": "#1B5B95",
+   "nombre": "",
+   "total": 333
+  },
+  {
+   "codigo": "M",
+   "hex": "#0B4C5E",
+   "nombre": "",
+   "total": 294
+  },
+  {
+   "codigo": "N",
+   "hex": "#0F408E",
+   "nombre": "",
+   "total": 280
+  },
+  {
+   "codigo": "O",
+   "hex": "#3596E7",
+   "nombre": "",
+   "total": 266
+  },
+  {
+   "codigo": "P",
+   "hex": "#197FA9",
+   "nombre": "",
+   "total": 266
+  },
+  {
+   "codigo": "Q",
+   "hex": "#277BD3",
+   "nombre": "",
+   "total": 243
+  },
+  {
+   "codigo": "R",
+   "hex": "#4AAFF4",
+   "nombre": "",
+   "total": 189
+  },
+  {
+   "codigo": "S",
+   "hex": "#1A5CB5",
+   "nombre": "",
+   "total": 185
+  },
+  {
+   "codigo": "T",
+   "hex": "#1B2C27",
+   "nombre": "",
+   "total": 155
+  },
+  {
+   "codigo": "U",
+   "hex": "#1041A1",
+   "nombre": "",
+   "total": 118
+  },
+  {
+   "codigo": "V",
+   "hex": "#3D4E67",
+   "nombre": "",
+   "total": 36
+  },
+  {
+   "codigo": "W",
+   "hex": "#26564C",
+   "nombre": "",
+   "total": 29
+  },
+  {
+   "codigo": "X",
+   "hex": "#2E8980",
+   "nombre": "",
+   "total": 22
+  },
+  {
+   "codigo": "Y",
+   "hex": "#155A3B",
+   "nombre": "",
+   "total": 14
+  },
+  {
+   "codigo": "Z",
+   "hex": "#44AAAF",
+   "nombre": "",
+   "total": 14
+  },
+  {
+   "codigo": "AA",
+   "hex": "#0C7C1D",
+   "nombre": "",
+   "total": 13
+  },
+  {
+   "codigo": "AB",
+   "hex": "#6C8093",
+   "nombre": "",
+   "total": 13
+  },
+  {
+   "codigo": "AC",
+   "hex": "#189B4D",
+   "nombre": "",
+   "total": 13
+  },
+  {
+   "codigo": "AD",
+   "hex": "#0D581E",
+   "nombre": "",
+   "total": 12
+  },
+  {
+   "codigo": "AE",
+   "hex": "#506926",
+   "nombre": "",
+   "total": 3
+  },
+  {
+   "codigo": "AF",
+   "hex": "#58821F",
+   "nombre": "",
+   "total": 3
+  }
+ ],
+ "creado": "2026-11-02T22:37:08.276Z"
+}
