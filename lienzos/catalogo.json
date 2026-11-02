@@ -18,6 +18,15 @@
   "colores": "haaland/colores.json",
   "referencia": "haaland/referencia.jpg",
   "portada": "haaland/portada.jpg"
+}, 
+  {
+  "id": "haaland-y-bellingham",
+  "titulo": "Haaland y bellingham",
+  "version": 1,
+  "svg": "haaland-y-bellingham/lienzo.svg",
+  "colores": "haaland-y-bellingham/colores.json",
+  "referencia": "haaland-y-bellingham/referencia.jpg",
+  "portada": "haaland-y-bellingham/portada.jpg"
 }
  ]
 }
