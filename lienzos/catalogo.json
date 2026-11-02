@@ -27,6 +27,15 @@
   "colores": "haaland-y-bellingham/colores.json",
   "referencia": "haaland-y-bellingham/referencia.jpg",
   "portada": "haaland-y-bellingham/portada.jpg"
+},
+  {
+ "id": "neytiri",
+ "titulo": "Neytiri",
+ "version": 1,
+ "svg": "neytiri/lienzo.svg",
+ "colores": "neytiri/colores.json",
+ "referencia": "neytiri/referencia.jpg",
+ "portada": "neytiri/portada.jpg"
 }
  ]
 }
