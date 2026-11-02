@@ -24,7 +24,7 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 #stage{position:absolute;inset:0;overflow:hidden;touch-action:none}
 #sv{position:absolute;left:0;top:0;transform-origin:0 0}
 #stage.hc #textos{display:none}
-#top{position:absolute;top:-2px;left:6%;right:6%;padding:max(8px,env(safe-area-inset-top)) 12px 8px;display:flex;align-items:center;justify-content:center;gap:14px;border-radius:0 0 40px 40px;text-align:center;font-size:clamp(1.3rem,5vw,2.6rem);font-weight:700;z-index:5}
+#top{position:absolute;top:-2px;left:6%;right:6%;padding:max(8px,env(safe-area-inset-top)) 12px 8px;display:flex;align-items:center;justify-content:space-between;gap:10px;border-radius:0 0 40px 40px;text-align:center;font-size:clamp(1.3rem,5vw,2.6rem);font-weight:700;z-index:5}
 .ib{position:absolute;z-index:6;width:48px;height:48px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:1.5rem;font-weight:700}
 #home{left:8px;top:72px;background:none;border:0;box-shadow:none;width:56px;height:56px}
 #home svg{width:100%;fill:#fff;filter:drop-shadow(0 2px 4px #0008)}
@@ -50,7 +50,11 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 #toast{position:fixed;left:50%;top:max(70px,env(safe-area-inset-top));transform:translateX(-50%);background:#fff;padding:10px 18px;border-radius:20px;z-index:30;display:none;max-width:90vw;box-shadow:0 4px 20px #0006}
 #sav{position:absolute;left:70px;bottom:10px;z-index:6;color:#fff;font-size:.8rem;text-shadow:0 1px 4px #000}
 #mbtn{position:fixed;z-index:12;top:14px;right:4vw;width:48px;height:48px;border-radius:50%;padding:0;display:grid;place-items:center;font-size:1.4rem}
-#top #mbtn{position:static;width:40px;height:40px;flex:none;font-size:1.2rem}
+#top #mbtn{position:static;width:44px;height:44px;flex:none;font-size:1.3rem}
+#ttl{flex:1;text-align:center}
+#actc{flex:none;width:56px;height:44px;border:0;background:none;padding:0}
+#actc span{display:grid;place-items:center;width:100%;height:100%;border-radius:55% 45% 52% 48%/48% 56% 44% 52%;font-size:1.3rem;font-weight:700;color:#fff;border:2px solid #0004;background:#0001;-webkit-text-stroke:0;paint-order:stroke fill}
+#actc.on span{-webkit-text-stroke:3px #000}
 #mbtn.on{outline:3px solid #fff;box-shadow:0 0 14px #fff}
 #mus{position:fixed;inset:0;z-index:16;display:none;place-items:center;background:#0005}
 #mus>div{width:min(94vw,420px);max-height:86vh;overflow:auto;border-radius:30px;padding:16px}
@@ -65,7 +69,7 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 
 <div id="pt">
  <div id="stage"></div>
- <div id="top" class="glass"><span id="ttl" style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span></div>
+ <div id="top" class="glass"><button id="actc" aria-label="Color activo"><span>—</span></button><span id="ttl" style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></span></div>
  <button id="home" class="ib" aria-label="Inicio"><svg viewBox="0 0 100 90"><path d="M50 0 0 45h14v45h26V58h20v32h26V45h14z"/><rect x="10" y="8" width="14" height="22"/></svg></button>
  <button class="ib glass" id="zi" style="left:10px;top:136px">+</button>
  <button class="ib glass" id="zo" style="left:10px;top:192px">−</button>
@@ -93,8 +97,9 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 <div id="set"><div class="glass"><b style="font-size:1.3rem">Ajustes</b>
  <label><input type="checkbox" id="phc"> Ocultar códigos</label>
  <label><input type="checkbox" id="pvib"> Vibración al fallar</label>
+ <label><input type="checkbox" id="pflash"> Parpadeo rojo al fallar</label>
  <button id="pbg">Cambiar fondo</button><input type="file" id="bgf" accept="image/*" hidden>
- <button id="prst">Reiniciar este lienzo</button><button id="pexp">Exportar copia</button><button id="pimp">Importar copia</button><input type="file" id="impf" accept=".json,application/json" hidden><button id="pok">Cerrar</button>
+ <button id="prst">Reiniciar este lienzo</button><button id="pimg">Guardar imagen del lienzo</button><button id="pexp">Exportar copia</button><button id="pimp">Importar copia</button><input type="file" id="impf" accept=".json,application/json" hidden><button id="pok">Cerrar</button>
  <p style="font-size:.75rem;margin:10px 0 0">El progreso se guarda en este navegador y dispositivo (no se sincroniza).</p></div></div>
 <div id="toast"></div>
 
@@ -154,18 +159,19 @@ async function openC(e){toast('Cargando lienzo…',0);
   if(r&&r.version==e.version&&r.total==cs.length){r.pintados.forEach(i=>{if(i<cs.length){cur.painted.add(i);paintCell(i)}});cur.cs.forEach(()=>0);cur.painted.forEach(i=>cur.done[cs[i].getAttribute('data-code')]++);if(r.activo in pal)cur.active=r.activo}
   else if(r)toast('El lienzo cambió de versión: el progreso anterior no se aplicó.',6000);
   $('#ttl').textContent=e.titulo||e.id;$('#refimg').src=U(e.referencia);$('#refimg').onerror=()=>$('#referr').textContent='No se pudo cargar la referencia.';$('#referr').textContent='';
-  buildSw();$('#lib').style.display='none';$('#pt').style.display='block';document.body.classList.add('paint');$('#top').append($('#mbtn'));$('#stage').className=pref.hc?'hc':'';
+  buildSw();$('#lib').style.display='none';$('#pt').style.display='block';document.body.classList.add('paint');$('#top').append($('#mbtn'));history.pushState({c:e.id},'');$('#stage').className=pref.hc?'hc':'';
   closeP();fit();toast('',1);$('#toast').style.display='none';
  }catch(err){console.error(err);toast('No se pudo abrir el lienzo: '+err.message+'. Toca la tarjeta para reintentar.',7000)}}
 function paintCell(i){const c=cur.cs[i],h=cur.pal[c.getAttribute('data-code')];c.setAttribute('fill',h);if(cur.tx[i])cur.tx[i].setAttribute('fill',lum(h)>140?'#111':'#fff')}
 function buildSw(){const b=$('#sws');b.innerHTML='';cur.order.forEach(k=>{const d=document.createElement('button');d.className='sw';d.dataset.k=k;
- d.innerHTML=`<span style="background:${cur.pal[k]}">${k}</span><small></small>`;d.onclick=()=>{cur.active=k;mark();save()};b.append(d)});cur.order.forEach(updSw);mark()}
+ d.innerHTML=`<span style="background:${cur.pal[k]}">${k}</span><small></small>`;d.onclick=()=>{cur.active=k;mark();save();$('#colp').classList.remove('open');$('#tabB').style.display=''};b.append(d)});cur.order.forEach(updSw);mark()}
 function updSw(k){const d=$(`.sw[data-k="${CSS.escape(k)}"] small`);if(d)d.textContent=`${cur.done[k]}/${cur.tot[k]}`}
-function mark(){document.querySelectorAll('.sw').forEach(d=>d.classList.toggle('on',d.dataset.k===cur.active))}
+function mark(){const a=$('#actc'),sp=a.firstChild,k=cur&&cur.active;a.classList.toggle('on',!!k);sp.textContent=k||'—';sp.style.background=k?cur.pal[k]:'';
+ document.querySelectorAll('.sw').forEach(d=>d.classList.toggle('on',d.dataset.k===cur.active))}
 
 /* ---------- Pintar ---------- */
 function tap(c){if(!cur.active)return toast('Elige un color en el panel inferior.',2000);const i=c.__i;if(cur.painted.has(i))return;
- const k=c.getAttribute('data-code');if(k!==cur.active){if(pref.vib&&navigator.vibrate)navigator.vibrate(25);return}
+ const k=c.getAttribute('data-code');if(k!==cur.active){if(pref.vib)buzz();if(pref.flash!==false){c.setAttribute('stroke','#e33');c.setAttribute('stroke-width',+c.getAttribute('r')*.3);setTimeout(()=>{c.removeAttribute('stroke');c.removeAttribute('stroke-width')},200)}return}
  cur.painted.add(i);paintCell(i);cur.done[k]++;updSw(k);save();if(cur.painted.size===cur.total)toast('¡Lienzo terminado! 🎉',6000)}
 function save(now){const r=cur;if(!r)return;clearTimeout(saveT);$('#sav').textContent='Guardando…';
  const go=async()=>{try{const rec={id:r.e.id,version:r.e.version,total:r.total,pintados:[...r.painted],activo:r.active,fecha:Date.now()};await dbPut('progreso',rec);P[r.e.id]=rec;$('#sav').textContent='Guardado ✓'}catch(x){$('#sav').textContent='No se pudo guardar'}};
@@ -197,14 +203,23 @@ const closeP=()=>{$('#refp').classList.remove('open');$('#colp').classList.remov
 $('#tabR').onclick=()=>{sizeRef();$('#refp').classList.add('open');$('#tabR').style.display='none'};
 $('#refx').onclick=()=>{$('#refp').classList.remove('open');$('#tabR').style.display=''};
 $('#tabB').onclick=()=>{$('#colp').classList.add('open');$('#tabB').style.display='none'};
+$('#actc').onclick=()=>$('#colp').classList.contains('open')?$('#colx').click():$('#tabB').click();
 $('#colx').onclick=()=>{$('#colp').classList.remove('open');$('#tabB').style.display=''};
 $('#refimg').onclick=()=>{$('#big img').src=$('#refimg').src;$('#big').style.display='grid'};$('#big').onclick=()=>$('#big').style.display='none';
-$('#home').onclick=()=>{save(true);document.body.classList.remove('paint');document.body.append($('#mbtn'));$('#pt').style.display='none';$('#lib').style.display='';loadLib()};
-$('#gear').onclick=()=>{$('#phc').checked=pref.hc;$('#pvib').checked=pref.vib;$('#set').style.display='grid'};
+function goHome(){save(true);document.body.classList.remove('paint');document.body.append($('#mbtn'));$('#pt').style.display='none';$('#lib').style.display='';loadLib()}
+/* Botón «atrás» de Android: cierra ventanas/paneles y luego vuelve a la biblioteca (sin salir de la app) */
+$('#home').onclick=()=>history.state&&history.state.c?history.back():goHome();
+addEventListener('popstate',()=>{if(!cur||$('#pt').style.display!=='block')return;
+ const ov=['#big','#set','#mus'].find(q=>$(q).style.display&&$(q).style.display!=='none');
+ const pn=!ov&&['#refp','#colp'].some(q=>$(q).classList.contains('open'));
+ if(ov||pn){if(ov)$(ov).style.display='none';else{$('#refx').click();$('#colx').click()}history.pushState({c:cur.e.id},'');return}
+ goHome()});
+if(history.state&&history.state.c)history.replaceState(null,'');
+$('#gear').onclick=()=>{$('#phc').checked=pref.hc;$('#pvib').checked=pref.vib;$('#pflash').checked=pref.flash!==false;$('#set').style.display='grid'};
 $('#pok').onclick=()=>$('#set').style.display='none';
 const sp=()=>dbPut('prefs',pref,'ui').catch(()=>{});
 $('#phc').onchange=e=>{pref.hc=e.target.checked;stage.className=pref.hc?'hc':'';sp()};
-$('#pvib').onchange=e=>{pref.vib=e.target.checked;sp()};
+$('#pvib').onchange=e=>{pref.vib=e.target.checked;sp()};$('#pflash').onchange=e=>{pref.flash=e.target.checked;sp()};
 $('#prst').onclick=()=>{if(!cur||!confirm('¿Borrar todo el progreso de este lienzo? No se puede deshacer.'))return;
  cur.painted.forEach(i=>{cur.cs[i].removeAttribute('fill');if(cur.tx[i])cur.tx[i].removeAttribute('fill')});cur.painted.clear();cur.order.forEach(k=>{cur.done[k]=0;updSw(k)});save(true);$('#set').style.display='none'};
 dbGet('prefs','ui').then(v=>{if(v)Object.assign(pref,v)}).catch(()=>{});
@@ -258,9 +273,28 @@ $('#mf').onchange=async e=>{const fs=[...e.target.files];e.target.value='';let b
  if(MUSURL)try{const j=await (await jget(MUSURL.href)).json();(j.canciones||[]).forEach(c=>{if(c&&c.archivo)T.push({id:'pub:'+(c.id||c.archivo),t:c.titulo||c.archivo,a:c.artista,src:new URL(c.archivo,MUSURL).href,dur:c.duracion,loc:0})})}catch(e){}
  ti=T.findIndex(x=>x.id===mp.last);ui();rl()})();
 
+/* ---------- Guardar archivos y vibración (compatibles con la webview de Android) ---------- */
+/* En la APK existe window.AndroidDownloader (DownloadBridge.kt). En un navegador normal se usa la descarga estándar. */
+async function saveFile(b,name){const AD=window.AndroidDownloader;
+ if(AD&&typeof AD.saveBase64File==='function'){const u=await new Promise((ok,no)=>{const f=new FileReader();f.onload=()=>ok(f.result);f.onerror=()=>no(f.error);f.readAsDataURL(b)});
+  AD.saveBase64File(String(u).split(',')[1],name,b.type||'application/octet-stream');return}
+ const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),5000);toast('Descargando '+name,2500)}
+function buzz(){const AD=window.AndroidDownloader;try{if(AD&&typeof AD.vibrar==='function')AD.vibrar(120);else if(navigator.vibrate)navigator.vibrate([110,40,110])}catch(e){}}
+async function saveImg(){if(!cur)return;toast('Generando imagen…',0);await new Promise(r=>setTimeout(r,40));
+ try{const sc=Math.min(3,2400/Math.max(W,H)),cv=document.createElement('canvas');cv.width=Math.round(W*sc);cv.height=Math.round(H*sc);const x=cv.getContext('2d');
+  x.fillStyle='#1c1c1c';x.fillRect(0,0,cv.width,cv.height);const r0=+cur.cs[0].getAttribute('r')*sc,txt=r0>7&&!pref.hc;
+  if(txt){x.textAlign='center';x.textBaseline='middle';x.font='700 '+Math.round(r0*1.05)+'px Arial,sans-serif'}
+  cur.cs.forEach((c,i)=>{const k=c.getAttribute('data-code'),p=cur.painted.has(i),hx=cur.pal[k];x.fillStyle=p?hx:'#F4F4EE';x.beginPath();x.arc(+c.getAttribute('cx')*sc,+c.getAttribute('cy')*sc,+c.getAttribute('r')*sc,0,6.2832);x.fill();
+   if(txt){x.fillStyle=p?(lum(hx)>140?'#111':'#fff'):'#222';x.fillText(k,+c.getAttribute('cx')*sc,+c.getAttribute('cy')*sc+1)}});
+  const b=await new Promise(r=>cv.toBlob(r,'image/png'));if(!b)throw Error('no se pudo crear la imagen');
+  await saveFile(b,String(cur.e.id).replace(/[^\w.-]+/g,'_')+'-pintado.png');$('#set').style.display='none';
+ }catch(e){toast('No se pudo guardar la imagen: '+e.message,5000);return}
+ if(!window.AndroidDownloader)return;$('#toast').style.display='none'}
+$('#pimg').onclick=saveImg;
+
 /* ---------- Copia de seguridad ---------- */
 $('#pexp').onclick=async()=>{try{const d={formato:1,tipo:'mybiblioteca-progreso',fecha:new Date().toISOString(),progreso:await dbAll('progreso')};
- const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(d)],{type:'application/json'}));a.download='mybiblioteca-copia.json';document.body.append(a);a.click();a.remove()}catch(e){toast('No se pudo exportar: '+e.message)}};
+ await saveFile(new Blob([JSON.stringify(d)],{type:'application/json'}),'mybiblioteca-copia.json')}catch(e){toast('No se pudo exportar: '+e.message)}};
 $('#pimp').onclick=()=>$('#impf').click();
 $('#impf').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)return;
  try{const d=JSON.parse(await f.text());if(d.tipo!=='mybiblioteca-progreso'||!Array.isArray(d.progreso))throw Error('archivo no válido');
