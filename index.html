@@ -45,7 +45,7 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 .panel .ar{position:absolute;right:8px;top:50%;margin-top:-22px;background:none;border:0}
 #big{position:fixed;inset:0;z-index:20;background:#000c;display:none;place-items:center}#big img{max-width:96vw;max-height:96vh}
 #set{position:fixed;inset:0;z-index:15;display:none;place-items:center;background:#0006}
-#set>div{border-radius:30px;padding:20px;width:min(90vw,380px)}
+#set>div{max-height:92vh;overflow:auto;border-radius:30px;padding:20px;width:min(90vw,380px)}
 #set label{display:flex;gap:8px;align-items:center;margin:10px 0}#set button{margin:4px 4px 0 0;padding:8px 14px;border-radius:16px;border:2px solid #fff;background:#fff8;font-weight:700}
 #toast{position:fixed;left:50%;top:max(70px,env(safe-area-inset-top));transform:translateX(-50%);background:#fff;padding:10px 18px;border-radius:20px;z-index:30;display:none;max-width:90vw;box-shadow:0 4px 20px #0006}
 #sav{position:absolute;left:70px;bottom:10px;z-index:6;color:#fff;font-size:.8rem;text-shadow:0 1px 4px #000}
@@ -63,6 +63,12 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
 .mb{border:2px solid #fff;background:#fff8;border-radius:16px;padding:6px 12px;font-weight:700;margin:3px 2px}
 .mrow{display:flex;flex-wrap:wrap;justify-content:center;margin:6px 0}
 #mus input[type=range]{width:100%}
+#room{position:fixed;inset:0;z-index:17;display:none;place-items:center;background:#0006}
+#room>div{border-radius:30px;padding:18px;width:min(92vw,400px);max-height:92vh;overflow:auto}
+#room label{display:block;font-size:.85rem;margin:8px 0 2px}
+#room input[type=text],#room input[type=password]{width:100%;padding:8px;border-radius:12px;border:1px solid #fff9;background:#fffd;font:inherit}
+#room button{margin:6px 4px 0 0;padding:8px 14px;border-radius:16px;border:2px solid #fff;background:#fff8;font-weight:700}
+#rst{position:absolute;left:70px;bottom:30px;z-index:6;color:#fff;font-size:.8rem;text-shadow:0 1px 4px #000}
 </style></head><body>
 <div id="bg"></div>
 <div id="lib"><h1>My Biblioteca</h1><div id="grid"></div></div>
@@ -81,7 +87,7 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
   <button class="ar" id="refx"><svg viewBox="0 0 40 44" style="transform:rotate(180deg)"><path d="M40 0 0 22 40 44 30 22z"/></svg></button></div>
  <div id="colp" class="panel glass"><div id="sws"></div>
   <button class="ar" id="colx"><svg viewBox="0 0 40 44" style="transform:rotate(-90deg)"><path d="M40 0 0 22 40 44 30 22z"/></svg></button></div>
- <div id="sav"></div>
+ <div id="sav"></div><div id="rst"></div>
 </div>
 <button id="mbtn" class="glass" aria-label="Música">♪</button>
 <div id="mus"><div class="glass"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:1.3rem">Música</b><button class="mb" id="mx">Minimizar</button></div>
@@ -94,17 +100,27 @@ h1{color:#fff;font-size:clamp(1.7rem,5.5vw,3.2rem);margin:.2em 0 .5em;text-shado
  <label style="display:flex;gap:6px;font-size:.85rem"><input type="checkbox" id="mkeep"> Guardar las canciones nuevas en este dispositivo</label>
  <div id="mlist" style="margin-top:8px"></div></div></div>
 <div id="big"><img alt=""></div>
-<div id="set"><div class="glass"><b style="font-size:1.3rem">Ajustes</b>
+<div id="room"><div class="glass"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:1.3rem">Sala compartida</b><button id="rok">Cerrar</button></div>
+ <p id="rinfo" style="font-size:.85rem;margin:6px 0"></p>
+ <label id="rurlw">URL del servidor (Apps Script)<input type="text" id="rurl" placeholder="https://script.google.com/macros/s/.../exec"></label>
+ <label>Nombre de la sala<input type="text" id="rname" maxlength="30" autocomplete="off"></label>
+ <label>Contraseña<input type="password" id="rpass" maxlength="40" autocomplete="off"></label>
+ <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="rmus"> Música compartida (solo canciones de musica/)</label>
+ <div><button id="rnew">Crear sala</button><button id="rjoin">Entrar</button><button id="rleave">Salir de la sala</button></div>
+ <p style="font-size:.75rem;margin:8px 0 0">Quien tenga el nombre y la contraseña puede pintar este lienzo. Dentro de una sala no se puede reiniciar el lienzo.</p></div></div>
+<div id="set"><div class="glass"><div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:1.3rem">Ajustes</b><button id="pok">Cerrar</button></div>
  <label><input type="checkbox" id="phc"> Ocultar códigos</label>
  <label><input type="checkbox" id="pvib"> Vibración al fallar</label>
  <label><input type="checkbox" id="pflash"> Parpadeo rojo al fallar</label>
  <button id="pbg">Cambiar fondo</button><input type="file" id="bgf" accept="image/*" hidden>
- <button id="prst">Reiniciar este lienzo</button><button id="pimg">Guardar imagen del lienzo</button><button id="pexp">Exportar copia</button><button id="pimp">Importar copia</button><input type="file" id="impf" accept=".json,application/json" hidden><button id="pok">Cerrar</button>
+ <button id="prst">Reiniciar este lienzo</button><button id="proom">Sala compartida</button><button id="pimg">Guardar imagen del lienzo</button><button id="pexp">Exportar copia</button><button id="pimp">Importar copia</button><input type="file" id="impf" accept=".json,application/json" hidden>
  <p style="font-size:.75rem;margin:10px 0 0">El progreso se guarda en este navegador y dispositivo (no se sincroniza).</p></div></div>
 <div id="toast"></div>
 
 <script>
 const $=s=>document.querySelector(s);
+/* URL del servidor de salas (Google Apps Script). Pégala aquí una vez; si queda vacía, se pide en la ventana «Sala compartida». */
+const SALAS_URL='https://script.google.com/macros/s/AKfycbyM0i5t9Zr6Xlxr9cDnp-GI5bIcRlpDwS7h_hUiYAQ4c4_OFESRENg33_sEWON9VVNCwg/exec';
 let CATURL=null;try{CATURL=new URL('lienzos/catalogo.json',location.href);if(!/^https?:|^file:/.test(CATURL.protocol))CATURL=null}catch(e){CATURL=null}
 const U=p=>new URL(p,CATURL).href;
 let cat,P={},M={},cur=null,pref={hc:false,vib:true},V={x:0,y:0,k:1},fitK=1,W=1,H=1,sv,saveT;
@@ -159,7 +175,7 @@ async function openC(e){toast('Cargando lienzo…',0);
   if(r&&r.version==e.version&&r.total==cs.length){r.pintados.forEach(i=>{if(i<cs.length){cur.painted.add(i);paintCell(i)}});cur.cs.forEach(()=>0);cur.painted.forEach(i=>cur.done[cs[i].getAttribute('data-code')]++);if(r.activo in pal)cur.active=r.activo}
   else if(r)toast('El lienzo cambió de versión: el progreso anterior no se aplicó.',6000);
   $('#ttl').textContent=e.titulo||e.id;$('#refimg').src=U(e.referencia);$('#refimg').onerror=()=>$('#referr').textContent='No se pudo cargar la referencia.';$('#referr').textContent='';
-  buildSw();$('#lib').style.display='none';$('#pt').style.display='block';document.body.classList.add('paint');$('#top').append($('#mbtn'));history.pushState({c:e.id},'');$('#stage').className=pref.hc?'hc':'';
+  buildSw();$('#lib').style.display='none';$('#pt').style.display='block';document.body.classList.add('paint');$('#top').append($('#mbtn'));history.pushState({c:e.id},'');if(room)startSync();$('#stage').className=pref.hc?'hc':'';
   closeP();fit();toast('',1);$('#toast').style.display='none';
  }catch(err){console.error(err);toast('No se pudo abrir el lienzo: '+err.message+'. Toca la tarjeta para reintentar.',7000)}}
 function paintCell(i){const c=cur.cs[i],h=cur.pal[c.getAttribute('data-code')];c.setAttribute('fill',h);if(cur.tx[i])cur.tx[i].setAttribute('fill',lum(h)>140?'#111':'#fff')}
@@ -172,7 +188,7 @@ function mark(){const a=$('#actc'),sp=a.firstChild,k=cur&&cur.active;a.classList
 /* ---------- Pintar ---------- */
 function tap(c){if(!cur.active)return toast('Elige un color en el panel inferior.',2000);const i=c.__i;if(cur.painted.has(i))return;
  const k=c.getAttribute('data-code');if(k!==cur.active){if(pref.vib)buzz();if(pref.flash!==false){c.setAttribute('stroke','#e33');c.setAttribute('stroke-width',+c.getAttribute('r')*.3);setTimeout(()=>{c.removeAttribute('stroke');c.removeAttribute('stroke-width')},200)}return}
- cur.painted.add(i);paintCell(i);cur.done[k]++;updSw(k);save();if(cur.painted.size===cur.total)toast('¡Lienzo terminado! 🎉',6000)}
+ cur.painted.add(i);paintCell(i);cur.done[k]++;updSw(k);save();if(room){sy.pend.add(i);schedSync()}if(cur.painted.size===cur.total)toast('¡Lienzo terminado! 🎉',6000)}
 function save(now){const r=cur;if(!r)return;clearTimeout(saveT);$('#sav').textContent='Guardando…';
  const go=async()=>{try{const rec={id:r.e.id,version:r.e.version,total:r.total,pintados:[...r.painted],activo:r.active,fecha:Date.now()};await dbPut('progreso',rec);P[r.e.id]=rec;$('#sav').textContent='Guardado ✓'}catch(x){$('#sav').textContent='No se pudo guardar'}};
  now?go():saveT=setTimeout(go,500)}
@@ -206,11 +222,11 @@ $('#tabB').onclick=()=>{$('#colp').classList.add('open');$('#tabB').style.displa
 $('#actc').onclick=()=>$('#colp').classList.contains('open')?$('#colx').click():$('#tabB').click();
 $('#colx').onclick=()=>{$('#colp').classList.remove('open');$('#tabB').style.display=''};
 $('#refimg').onclick=()=>{$('#big img').src=$('#refimg').src;$('#big').style.display='grid'};$('#big').onclick=()=>$('#big').style.display='none';
-function goHome(){save(true);document.body.classList.remove('paint');document.body.append($('#mbtn'));$('#pt').style.display='none';$('#lib').style.display='';loadLib()}
+function goHome(){save(true);stopSync(true);document.body.classList.remove('paint');document.body.append($('#mbtn'));$('#pt').style.display='none';$('#lib').style.display='';loadLib()}
 /* Botón «atrás» de Android: cierra ventanas/paneles y luego vuelve a la biblioteca (sin salir de la app) */
 $('#home').onclick=()=>history.state&&history.state.c?history.back():goHome();
 addEventListener('popstate',()=>{if(!cur||$('#pt').style.display!=='block')return;
- const ov=['#big','#set','#mus'].find(q=>$(q).style.display&&$(q).style.display!=='none');
+ const ov=['#big','#room','#set','#mus'].find(q=>$(q).style.display&&$(q).style.display!=='none');
  const pn=!ov&&['#refp','#colp'].some(q=>$(q).classList.contains('open'));
  if(ov||pn){if(ov)$(ov).style.display='none';else{$('#refx').click();$('#colx').click()}history.pushState({c:cur.e.id},'');return}
  goHome()});
@@ -220,7 +236,7 @@ $('#pok').onclick=()=>$('#set').style.display='none';
 const sp=()=>dbPut('prefs',pref,'ui').catch(()=>{});
 $('#phc').onchange=e=>{pref.hc=e.target.checked;stage.className=pref.hc?'hc':'';sp()};
 $('#pvib').onchange=e=>{pref.vib=e.target.checked;sp()};$('#pflash').onchange=e=>{pref.flash=e.target.checked;sp()};
-$('#prst').onclick=()=>{if(!cur||!confirm('¿Borrar todo el progreso de este lienzo? No se puede deshacer.'))return;
+$('#prst').onclick=()=>{if(room){toast('En una sala no se puede reiniciar el lienzo. Sal de la sala primero.',4000);return}if(!cur||!confirm('¿Borrar todo el progreso de este lienzo? No se puede deshacer.'))return;
  cur.painted.forEach(i=>{cur.cs[i].removeAttribute('fill');if(cur.tx[i])cur.tx[i].removeAttribute('fill')});cur.painted.clear();cur.order.forEach(k=>{cur.done[k]=0;updSw(k)});save(true);$('#set').style.display='none'};
 dbGet('prefs','ui').then(v=>{if(v)Object.assign(pref,v)}).catch(()=>{});
 
@@ -249,8 +265,8 @@ async function rmT(i){const t=T[i];if(!confirm('¿Quitar «'+t.t+'» de la lista
  if(i===ti){au.pause();au.removeAttribute('src');au.load();ti=-1}else if(i<ti)ti--;
  if(t.saved)try{await tx('musica','readwrite',o=>o.delete(t.id))}catch(e){}URL.revokeObjectURL(t.src);T.splice(i,1);ui();rl()}
 au.onerror=()=>{const t=T[ti];if(t&&au.getAttribute('src'))toast('No se pudo reproducir «'+t.t+'»: formato no compatible o archivo no encontrado.',5000);ui();rl()};
-au.onended=()=>{if(mp.rep==1){au.currentTime=0;au.play().catch(()=>{})}else step(1,true)};
-au.onplay=au.onpause=()=>{ui();rl();if(au.paused){mp.pos=au.currentTime||0;smp()}};
+au.onended=()=>{if(room&&sy.mshare&&sy.mby&&sy.mby!==cid)return;if(mp.rep==1){au.currentTime=0;au.play().catch(()=>{})}else step(1,true)};
+au.onplay=au.onpause=()=>{ui();rl();if(au.paused){mp.pos=au.currentTime||0;smp()}mShare()};au.onseeked=()=>mShare();
 au.onloadedmetadata=()=>{if(T[ti]&&!T[ti].dur){T[ti].dur=au.duration;rl()}ui()};
 au.ontimeupdate=()=>{if(!seeking&&au.duration)$('#ms').value=au.currentTime/au.duration*1000;$('#mc').textContent=fmt(au.currentTime);
  if(Date.now()-lp>5000){lp=Date.now();mp.pos=au.currentTime;smp()}};
@@ -301,5 +317,51 @@ $('#impf').onchange=async e=>{const f=e.target.files[0];e.target.value='';if(!f)
   if(!confirm('Se importarán '+d.progreso.length+' lienzo(s) y reemplazarán el progreso de esos mismos lienzos. ¿Continuar?'))return;
   for(const r of d.progreso)if(r&&typeof r.id==='string'&&Array.isArray(r.pintados))await dbPut('progreso',r);
   cur=null;$('#set').style.display='none';$('#home').click();toast('Copia importada.')}catch(x){toast('No se pudo importar: '+x.message,5000)}};
+
+/* ---------- Salas compartidas (Google Apps Script) ---------- */
+let cid=localStorage.getItem('mb_cid');if(!cid){cid=Math.random().toString(36).slice(2,12);try{localStorage.setItem('mb_cid',cid)}catch(e){}}
+let room=null,sy={v:0,mseq:0,busy:false,pend:new Set(),tm:null,d:null,mout:null,mshare:false,mby:null,ign:0,news:0};
+try{room=JSON.parse(localStorage.getItem('mb_sala')||'null')}catch(e){}
+if(room)sy.mshare=!!room.mus;
+const saveRoom=()=>{try{room?localStorage.setItem('mb_sala',JSON.stringify(room)):localStorage.removeItem('mb_sala')}catch(e){}};
+const rstat=t=>$('#rst').textContent=t||'';
+async function rpc(url,body){const r=await fetch(url,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(body),redirect:'follow'});if(!r.ok)throw Error('HTTP '+r.status);return r.json()}
+const ERR={existe:'Ya existe una sala con ese nombre.',no_existe:'Esa sala no existe.',clave:'Contraseña incorrecta.',bloqueada:'Demasiados intentos fallidos. Espera 10 minutos.',datos:'Nombre de 3 a 30 letras, números, espacios o guiones, y contraseña de 4 a 40 caracteres.',total:'Este lienzo tiene otro tamaño en la sala.',lienzo:'Lienzo no válido para la sala.'};
+function roomUI(){$('#rurlw').style.display=SALAS_URL?'none':'';$('#rurl').value=(room&&room.url)||SALAS_URL||$('#rurl').value;
+ $('#rinfo').textContent=room?'Conectado a «'+room.sala+'». Se sincroniza mientras tienes un lienzo abierto.':'Sin sala: pintas solo en este dispositivo.';
+ $('#rleave').style.display=room?'':'none';$('#rnew').style.display=$('#rjoin').style.display=room?'none':'';$('#rname').value=room?room.sala:$('#rname').value;$('#rpass').value='';$('#rmus').checked=room?!!room.mus:$('#rmus').checked;if(!room)rstat('')}
+async function roomGo(act){const url=SALAS_URL||$('#rurl').value.trim(),sala=$('#rname').value.trim().toLowerCase(),clave=$('#rpass').value;
+ if(!url)return toast('Falta la URL del servidor de salas.',4000);
+ try{toast('Conectando…',0);const j=await rpc(url,{a:act,sala,clave});$('#toast').style.display='none';
+  if(!j.ok)return toast(ERR[j.error]||'No se pudo: '+j.error,5000);
+  room={url,sala,clave,mus:$('#rmus').checked};sy.mshare=room.mus;saveRoom();roomUI();$('#room').style.display='none';
+  toast(act==='crear'?'Sala creada. Comparte el nombre y la contraseña.':'Entraste a la sala.',3000);if(cur)startSync();
+ }catch(e){$('#toast').style.display='none';toast('Sin conexión con el servidor de salas: '+e.message,5000)}}
+$('#proom').onclick=()=>{$('#set').style.display='none';roomUI();$('#room').style.display='grid'};
+$('#rok').onclick=()=>$('#room').style.display='none';
+$('#rnew').onclick=()=>roomGo('crear');$('#rjoin').onclick=()=>roomGo('unir');
+$('#rleave').onclick=()=>{stopSync();room=null;saveRoom();sy.mshare=false;sy.mby=null;roomUI();toast('Saliste de la sala. Tu progreso local se conserva.',3500)};
+$('#rmus').onchange=e=>{if(room){room.mus=e.target.checked;sy.mshare=room.mus;saveRoom()}};
+function schedSync(){clearTimeout(sy.d);sy.d=setTimeout(syncTick,1200)}
+function startSync(){if(!room||!cur)return;stopSync();sy.v=0;sy.mseq=0;sy.news=0;sy.pend=new Set(cur.painted);syncTick();sy.tm=setInterval(syncTick,4000)}
+function stopSync(flush){if(flush&&room&&cur)syncTick();clearInterval(sy.tm);sy.tm=null;clearTimeout(sy.d)}
+function applyBits(b64){const bin=atob(b64),ch=new Set();let n=0;
+ for(let i=0;i<cur.total;i++){if(((bin.charCodeAt(i>>3)>>(i&7))&1)&&!cur.painted.has(i)){cur.painted.add(i);paintCell(i);const k=cur.cs[i].getAttribute('data-code');cur.done[k]++;ch.add(k);n++}}
+ ch.forEach(updSw);if(n){save();sy.news+=n;if(cur.painted.size===cur.total)toast('¡Lienzo terminado entre todos! 🎉',6000)}}
+async function syncTick(){if(!room||!cur||sy.busy)return;sy.busy=true;const add=[...sy.pend],mo=sy.mout,e=cur.e;
+ try{const j=await rpc(room.url,{a:'sync',sala:room.sala,clave:room.clave,lienzo:e.id+'@'+e.version,total:cur.total,add,v:sy.v,mseq:sy.mseq,cid,musica:mo||undefined});
+  if(!j.ok){if(j.error==='clave'||j.error==='no_existe'){stopSync();room=null;saveRoom();rstat('');return toast('La sala ya no es válida: '+(ERR[j.error]),6000)}throw Error(ERR[j.error]||j.error)}
+  if(cur&&cur.e===e){add.forEach(i=>sy.pend.delete(i));if(sy.mout===mo)sy.mout=null;if(j.bits)applyBits(j.bits);sy.v=j.v;
+   if(j.mseq!==undefined){const nuevo=j.mseq!==sy.mseq;sy.mseq=j.mseq;if(nuevo&&j.musica)applyMusic(j.musica,j.now)}
+   rstat('👥 '+room.sala+(sy.news?' · +'+sy.news+' de otros':'')+(sy.pend.size?' · enviando…':''))}
+ }catch(err){rstat('👥 '+room.sala+' · sin conexión, reintentando…')}finally{sy.busy=false}}
+/* Música compartida: solo canciones publicadas (musica/). Cada cambio (play, pausa, canción, posición) se comparte; los demás lo siguen. */
+function mShare(){if(!room||!sy.mshare||sy.ign>Date.now()||!cur)return;const t=T[ti];if(!t||t.loc)return;sy.mout={id:t.id,play:!au.paused,pos:au.currentTime};sy.mby=cid;setTimeout(syncTick,300)}
+function applyMusic(m,now){if(!sy.mshare||m.by===cid)return;sy.mby=m.by;const i=T.findIndex(t=>t.id===m.id);
+ if(i<0)return toast('La canción compartida no está en tu lista de canciones publicadas.',4000);
+ sy.ign=Date.now()+2500;const target=m.play?m.pos+Math.max(0,(now-m.at)/1000):m.pos;
+ const go=()=>{if(Math.abs(au.currentTime-target)>1.2)au.currentTime=target;m.play?au.play().catch(()=>{}):au.pause()};
+ if(ti!==i||!au.getAttribute('src')){ti=i;au.src=T[i].src;mp.last=T[i].id;ui();rl();au.addEventListener('loadedmetadata',go,{once:true})}else go()}
+roomUI();
 loadLib();
 </script></body></html>
